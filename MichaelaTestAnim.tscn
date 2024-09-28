@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cy2xyvvccs18"]
+[gd_scene load_steps=15 format=3 uid="uid://cy2xyvvccs18"]
 
 [ext_resource type="Texture2D" uid="uid://drnutxprx4doc" path="res://Assets/CharacterSprites/Flying/1.png" id="1_4lll5"]
 [ext_resource type="Texture2D" uid="uid://bx3xx7wyxnhwm" path="res://Assets/CharacterSprites/Flying/2.png" id="2_ly7hl"]
@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://bdu5x73yp0smc" path="res://Assets/CharacterSprites/Flying/4.png" id="4_t15ig"]
 [ext_resource type="Texture2D" uid="uid://de13gfyln0nys" path="res://Assets/CharacterSprites/Flying/5.png" id="5_hvf4x"]
 [ext_resource type="Texture2D" uid="uid://cmj0mpxwex306" path="res://Assets/CharacterSprites/Flying/6.png" id="6_u5ec1"]
+[ext_resource type="Texture2D" uid="uid://cm1v0aeqro7k4" path="res://Assets/CharacterSprites/Crawling/1.png" id="7_2jx05"]
+[ext_resource type="Texture2D" uid="uid://dh6ffind87ybi" path="res://Assets/CharacterSprites/Crawling/2.png" id="8_ijexb"]
+[ext_resource type="Texture2D" uid="uid://iffxbnp4m48u" path="res://Assets/CharacterSprites/Crawling/3.png" id="9_m3je7"]
+[ext_resource type="Texture2D" uid="uid://b005lfp3cxb5q" path="res://Assets/CharacterSprites/Crawling/4.png" id="10_xqtkn"]
+[ext_resource type="Texture2D" uid="uid://celjjq80qsovt" path="res://Assets/CharacterSprites/Crawling/5.png" id="11_ofc6t"]
+[ext_resource type="Texture2D" uid="uid://c8degrqmdkd7j" path="res://Assets/CharacterSprites/Crawling/6.png" id="12_cvtn2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vaafd"]
 animations = [{
@@ -50,10 +56,42 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_odetw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_2jx05")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_ijexb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_m3je7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_xqtkn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ofc6t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cvtn2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
 [node name="Node2D" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_vaafd")
 animation = &"new_animation"
 frame = 4
 frame_progress = 0.861113
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_odetw")
+frame = 4
+frame_progress = 0.949689
