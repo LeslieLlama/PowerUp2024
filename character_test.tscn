@@ -1,10 +1,10 @@
 [gd_scene load_steps=20 format=4 uid="uid://c58mgi6lbhled"]
 
-[ext_resource type="Texture2D" uid="uid://ce1rjndyh20gs" path="res://Placeholders/Background Place holder.png" id="1_7dp3k"]
 [ext_resource type="Script" path="res://LevelControl.gd" id="1_won5r"]
 [ext_resource type="Texture2D" uid="uid://culampgt06wms" path="res://icon.svg" id="1_wuj4c"]
 [ext_resource type="PackedScene" uid="uid://luklkme5r03o" path="res://Scenes/UserInterface.tscn" id="2_0ho62"]
 [ext_resource type="PackedScene" uid="uid://cbmi64eg0ffdy" path="res://Scenes/player_character.tscn" id="2_cvby1"]
+[ext_resource type="Texture2D" uid="uid://bwrtargoq8bo4" path="res://Assets/Background 1.png" id="3_4jiuq"]
 [ext_resource type="PackedScene" uid="uid://neubdpnluya4" path="res://Scenes/windgust_bounce.tscn" id="4_e2snr"]
 [ext_resource type="PackedScene" uid="uid://m8g6lhv56ob6" path="res://Scenes/windgust_lift.tscn" id="4_s0mef"]
 [ext_resource type="Texture2D" uid="uid://cn53fsxibdacn" path="res://Placeholders/FloorPlaceholder.png" id="6_ojndp"]
@@ -54,7 +54,7 @@ position = Vector2(288, 128)
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1920.0
 offset_bottom = 1080.0
-texture = ExtResource("1_7dp3k")
+texture = ExtResource("3_4jiuq")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 135.0
