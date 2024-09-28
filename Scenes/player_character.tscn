@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbmi64eg0ffdy"]
+
+[ext_resource type="Script" path="res://Scripts/PlayerMovement.gd" id="1_44lit"]
+[ext_resource type="Texture2D" uid="uid://culampgt06wms" path="res://icon.svg" id="2_w3o1v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aon5n"]
+radius = 7.28354
+
+[node name="PlayerCharacter" type="CharacterBody2D"]
+scale = Vector2(3.29511, 3.01898)
+script = ExtResource("1_44lit")
+
+[node name="WingsSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.399034, 0.0982375)
+texture = ExtResource("2_w3o1v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, 0)
+scale = Vector2(0.15625, 0.25)
+texture = ExtResource("2_w3o1v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_aon5n")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = -7.28353
+offset_top = -25.5053
+offset_right = 41.7165
+offset_bottom = -2.50534
+scale = Vector2(0.318328, 0.376624)
+text = "State: "
+
+[node name="StaminaLabel" type="Label" parent="."]
+offset_left = -7.28351
+offset_top = -34.4488
+offset_right = 41.7165
+offset_bottom = -11.4488
+scale = Vector2(0.318328, 0.376624)
+theme_override_colors/font_color = Color(0.24631, 0.799065, 0.545432, 1)
+text = "Stamina: "

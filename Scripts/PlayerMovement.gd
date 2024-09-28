@@ -9,6 +9,9 @@ var direction
 enum States{IDLE, RUNNING, FALLING, GLIDING, CLIMBING}
 var state: States = States.IDLE
 
+func _ready() -> void:
+	Signals.PlayerDamage.connect(_take_damage)
+
 func _process(delta: float) -> void:
 	direction = Input.get_axis("left", "right")
 	
@@ -22,11 +25,13 @@ func _process(delta: float) -> void:
 			state = States.GLIDING
 		else: state = States.FALLING
 	if is_on_wall():
-		if Input.is_action_pressed("action_1"):
-			state = States.CLIMBING
+		state = States.CLIMBING
+		#if Input.is_action_pressed("action_1"):
+			
 	
 		
-	$Label.text = str(state)
+	$Label.text = str("state : ", state)
+	$StaminaLabel.text = str("Stamina : ", 60)
 
 func _physics_process(delta: float) -> void:
 	
@@ -59,3 +64,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+func _take_damage():
+	print("owch!")

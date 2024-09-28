@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://m8g6lhv56ob6"]
+
+[ext_resource type="Texture2D" uid="uid://culampgt06wms" path="res://icon.svg" id="1_00kxd"]
+[ext_resource type="Script" path="res://Scripts/windgust_lift.gd" id="1_d66cy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6duo"]
+size = Vector2(128, 320)
+
+[node name="Windgust_Lift" type="Area2D"]
+script = ExtResource("1_d66cy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p6duo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.4)
+scale = Vector2(1, 2.52)
+texture = ExtResource("1_00kxd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

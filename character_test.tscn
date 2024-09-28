@@ -1,19 +1,58 @@
-[gd_scene load_steps=7 format=3 uid="uid://c58mgi6lbhled"]
+[gd_scene load_steps=20 format=4 uid="uid://c58mgi6lbhled"]
 
+<<<<<<< Updated upstream
 [ext_resource type="Script" path="res://PlayerMovement.gd" id="1_8qbqi"]
 [ext_resource type="Texture2D" uid="uid://bwrtargoq8bo4" path="res://Assets/Background 1.png" id="1_o0usd"]
+=======
+[ext_resource type="Texture2D" uid="uid://ce1rjndyh20gs" path="res://Placeholders/Background Place holder.png" id="1_7dp3k"]
+[ext_resource type="Script" path="res://LevelControl.gd" id="1_won5r"]
+>>>>>>> Stashed changes
 [ext_resource type="Texture2D" uid="uid://culampgt06wms" path="res://icon.svg" id="1_wuj4c"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aon5n"]
-radius = 7.28354
+[ext_resource type="PackedScene" uid="uid://cbmi64eg0ffdy" path="res://Scenes/player_character.tscn" id="2_cvby1"]
+[ext_resource type="PackedScene" uid="uid://neubdpnluya4" path="res://Scenes/windgust_bounce.tscn" id="4_e2snr"]
+[ext_resource type="PackedScene" uid="uid://m8g6lhv56ob6" path="res://Scenes/windgust_lift.tscn" id="4_s0mef"]
+[ext_resource type="Texture2D" uid="uid://cn53fsxibdacn" path="res://Placeholders/FloorPlaceholder.png" id="6_ojndp"]
+[ext_resource type="PackedScene" uid="uid://cv7bvkyygtjq0" path="res://Scenes/spike.tscn" id="6_ttam5"]
+[ext_resource type="Texture2D" uid="uid://586koxd8soop" path="res://Placeholders/SpikePlaceholder.png" id="7_efund"]
+[ext_resource type="Script" path="res://TileMapbaker.gd" id="8_xm7ig"]
+[ext_resource type="PackedScene" uid="uid://bqes5e0xqgdvc" path="res://Scenes/fruit_collectible.tscn" id="11_hrm8m"]
+[ext_resource type="Script" path="res://Scenes/fruit_collectible.gd" id="12_435re"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d5rr2"]
 size = Vector2(128, 128)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6duo"]
-size = Vector2(128, 320)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewk32"]
+texture = ExtResource("6_ojndp")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aw8wh"]
+texture = ExtResource("7_efund")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_48vvs"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/3 = SubResource("TileSetAtlasSource_ewk32")
+sources/4 = SubResource("TileSetAtlasSource_aw8wh")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkmt2"]
+size = Vector2(64, 960)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1xyo"]
+size = Vector2(576, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4m1u"]
+size = Vector2(1920, 64)
 
 [node name="CharacterTest" type="Node2D"]
+script = ExtResource("1_won5r")
+
+[node name="CharacterRespawn" type="Node2D" parent="."]
+position = Vector2(288, 128)
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1920.0
@@ -33,41 +72,11 @@ offset_bottom = 558.0
 text = "Left/Right to move 
 Z to climb walls and glide"
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(480, 144)
-scale = Vector2(3.29511, 3.01898)
-script = ExtResource("1_8qbqi")
-
-[node name="WingsSprite" type="Sprite2D" parent="CharacterBody2D"]
-scale = Vector2(0.399034, 0.0982375)
-texture = ExtResource("1_wuj4c")
-
-[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-1.90735e-06, 0)
-scale = Vector2(0.15625, 0.25)
-texture = ExtResource("1_wuj4c")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("CapsuleShape2D_aon5n")
-
-[node name="Label" type="Label" parent="CharacterBody2D"]
-offset_left = -7.28353
-offset_top = -25.5053
-offset_right = 41.7165
-offset_bottom = -2.50534
-scale = Vector2(0.318328, 0.376624)
-text = "State: "
-
-[node name="StaminaLabel" type="Label" parent="CharacterBody2D"]
-offset_left = -7.28351
-offset_top = -34.4488
-offset_right = 41.7165
-offset_bottom = -11.4488
-scale = Vector2(0.318328, 0.376624)
-theme_override_colors/font_color = Color(0.24631, 0.799065, 0.545432, 1)
-text = "Stamina: "
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_cvby1")]
+position = Vector2(288, 144)
 
 [node name="LevelGeometry" type="Node2D" parent="."]
+visible = false
 
 [node name="StaticBody2D" type="StaticBody2D" parent="LevelGeometry"]
 position = Vector2(416, 224)
@@ -102,37 +111,39 @@ texture = ExtResource("1_wuj4c")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/StaticBody2D3"]
 shape = SubResource("RectangleShape2D_d5rr2")
 
-[node name="Windgust_Lift" type="Area2D" parent="."]
-position = Vector2(1336, 856)
+[node name="Windgust_Lift" parent="." instance=ExtResource("4_s0mef")]
+position = Vector2(1272, 856)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Windgust_Lift"]
-shape = SubResource("RectangleShape2D_p6duo")
+[node name="Windgust_Bounce" parent="." instance=ExtResource("4_e2snr")]
+position = Vector2(808, 976)
 
-[node name="Sprite2D" type="Sprite2D" parent="Windgust_Lift"]
-modulate = Color(1, 1, 1, 0.4)
-scale = Vector2(1, 2.52)
-texture = ExtResource("1_wuj4c")
+[node name="Spike" parent="." instance=ExtResource("6_ttam5")]
 
-[node name="Windgust_Bounce" type="Area2D" parent="."]
-position = Vector2(744, 976)
-scale = Vector2(0.680317, 0.287048)
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Windgust_Bounce"]
-shape = SubResource("RectangleShape2D_p6duo")
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAdABAAAwAAAAAAAAAcABAAAwAAAAAAAAAbABAAAwAAAAAAAAAaABAAAwAAAAAAAAAZABAAAwAAAAAAAAAYABAAAwAAAAAAAAAXABAAAwAAAAAAAAAWABAAAwAAAAAAAAAVABAAAwAAAAAAAAAUABAAAwAAAAAAAAATABAAAwAAAAAAAAASABAAAwAAAAAAAAARABAAAwAAAAAAAAAQABAAAwAAAAAAAAAPABAAAwAAAAAAAAAOABAAAwAAAAAAAAANABAAAwAAAAAAAAAMABAAAwAAAAAAAAALABAAAwAAAAAAAAAKABAAAwAAAAAAAAAJABAAAwAAAAAAAAAIABAAAwAAAAAAAAAHABAAAwAAAAAAAAAGABAAAwAAAAAAAAAFABAAAwAAAAAAAAAEABAAAwAAAAAAAAADABAAAwAAAAAAAAACABAAAwAAAAAAAAABABAAAwAAAAAAAAAAABAAAwAAAAAAAAAAAA8AAwAAAAAAAAAAAA4AAwAAAAAAAAAAAA0AAwAAAAAAAAAAAAwAAwAAAAAAAAAAAAsAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAAkAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAEAAwAAAAAAAAACAAMAAwAAAAAAAAADAAMAAwAAAAAAAAAEAAMAAwAAAAAAAAAFAAMAAwAAAAAAAAAGAAMAAwAAAAAAAAAHAAMAAwAAAAAAAAAIAAMAAwAAAAAAAAAJAAMAAwAAAAAAAAAKAAMAAwAAAAAAAAA=")
+tile_set = SubResource("TileSet_48vvs")
+rendering_quadrant_size = 64
+collision_enabled = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Windgust_Bounce"]
-modulate = Color(1, 0.411765, 0, 0.4)
-scale = Vector2(1, 2.52)
-texture = ExtResource("1_wuj4c")
+[node name="CompositeCollider" type="StaticBody2D" parent="."]
+script = ExtResource("8_xm7ig")
+tilemaplayers_nodepaths = Array[NodePath]([NodePath("../TileMapLayer")])
 
-[node name="Spikes" type="Area2D" parent="."]
-position = Vector2(1824, 984)
-scale = Vector2(0.5, 0.211664)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CompositeCollider"]
+position = Vector2(32, 544)
+shape = SubResource("RectangleShape2D_jkmt2")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spikes"]
-shape = SubResource("RectangleShape2D_p6duo")
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CompositeCollider"]
+position = Vector2(416, 224)
+shape = SubResource("RectangleShape2D_g1xyo")
 
-[node name="Sprite2D" type="Sprite2D" parent="Spikes"]
-modulate = Color(0.886275, 0, 0.403922, 1)
-scale = Vector2(1, 2.52)
-texture = ExtResource("1_wuj4c")
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="CompositeCollider"]
+position = Vector2(960, 1056)
+shape = SubResource("RectangleShape2D_m4m1u")
+
+[node name="FruitCollectible" parent="." instance=ExtResource("11_hrm8m")]
+script = ExtResource("12_435re")

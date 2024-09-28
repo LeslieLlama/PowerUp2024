@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://neubdpnluya4"]
+
+[ext_resource type="Script" path="res://Scripts/windgust_bounce.gd" id="1_qm44a"]
+[ext_resource type="Texture2D" uid="uid://culampgt06wms" path="res://icon.svg" id="2_oaxd2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6duo"]
+size = Vector2(128, 320)
+
+[node name="Windgust_Bounce" type="Area2D"]
+scale = Vector2(0.729576, 0.207193)
+script = ExtResource("1_qm44a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_p6duo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.411765, 0, 0.4)
+scale = Vector2(1, 2.52)
+texture = ExtResource("2_oaxd2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

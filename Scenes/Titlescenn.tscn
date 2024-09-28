@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cviqli7ghy5qw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Title" type="Label" parent="."]
+offset_left = 672.0
+offset_right = 740.0
+offset_bottom = 23.0
+scale = Vector2(7.97036, 8.01049)
+text = "Titlecard"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 64.0
+offset_top = 256.0
+offset_right = 126.0
+offset_bottom = 287.0
+scale = Vector2(5.06451, 4.14888)
+text = "Level 1"
