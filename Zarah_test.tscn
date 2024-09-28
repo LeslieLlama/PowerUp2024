@@ -1,0 +1,173 @@
+[gd_scene load_steps=21 format=4 uid="uid://d2odq3qtg3d2o"]
+
+[ext_resource type="Script" path="res://LevelControl.gd" id="1_5v7ep"]
+[ext_resource type="PackedScene" uid="uid://luklkme5r03o" path="res://Scenes/UserInterface.tscn" id="2_3c2nu"]
+[ext_resource type="Texture2D" uid="uid://bwrtargoq8bo4" path="res://Assets/Background 1.png" id="3_l0nk1"]
+[ext_resource type="PackedScene" uid="uid://cbmi64eg0ffdy" path="res://Scenes/player_character.tscn" id="4_o8qg1"]
+[ext_resource type="Texture2D" uid="uid://culampgt06wms" path="res://icon.svg" id="5_23jls"]
+[ext_resource type="PackedScene" uid="uid://m8g6lhv56ob6" path="res://Scenes/windgust_lift.tscn" id="6_atytn"]
+[ext_resource type="PackedScene" uid="uid://neubdpnluya4" path="res://Scenes/windgust_bounce.tscn" id="7_6clpj"]
+[ext_resource type="PackedScene" uid="uid://cv7bvkyygtjq0" path="res://Scenes/spike.tscn" id="8_we5w7"]
+[ext_resource type="Texture2D" uid="uid://cn53fsxibdacn" path="res://Placeholders/FloorPlaceholder.png" id="9_3m3uj"]
+[ext_resource type="Texture2D" uid="uid://586koxd8soop" path="res://Placeholders/SpikePlaceholder.png" id="10_vh81s"]
+[ext_resource type="Script" path="res://TileMapbaker.gd" id="11_sehf1"]
+[ext_resource type="PackedScene" uid="uid://bqes5e0xqgdvc" path="res://Scenes/fruit_collectible.tscn" id="12_djo0y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5rr2"]
+size = Vector2(128, 128)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ewk32"]
+texture = ExtResource("9_3m3uj")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aw8wh"]
+texture = ExtResource("10_vh81s")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_48vvs"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/3 = SubResource("TileSetAtlasSource_ewk32")
+sources/4 = SubResource("TileSetAtlasSource_aw8wh")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twcfd"]
+size = Vector2(64, 960)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cvpsd"]
+size = Vector2(576, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hq5w4"]
+size = Vector2(448, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdjj2"]
+size = Vector2(2368, 64)
+
+[node name="CharacterTest" type="Node2D"]
+script = ExtResource("1_5v7ep")
+
+[node name="Control" parent="." instance=ExtResource("2_3c2nu")]
+
+[node name="CharacterRespawn" type="Node2D" parent="."]
+position = Vector2(288, 128)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_l0nk1")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 135.0
+offset_bottom = 70.0
+text = "Character testing in progress!"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 800.0
+offset_top = 488.0
+offset_right = 1029.0
+offset_bottom = 558.0
+text = "Left/Right to move 
+Z to climb walls and glide"
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("4_o8qg1")]
+position = Vector2(288, 144)
+
+[node name="Camera2D" type="Camera2D" parent="PlayerCharacter"]
+scale = Vector2(0.30348, 0.331238)
+limit_bottom = 1080
+drag_horizontal_enabled = true
+drag_left_margin = 0.1
+drag_right_margin = 0.1
+editor_draw_drag_margin = true
+
+[node name="LevelGeometry" type="Node2D" parent="."]
+visible = false
+
+[node name="StaticBody2D" type="StaticBody2D" parent="LevelGeometry"]
+position = Vector2(416, 224)
+scale = Vector2(4.47999, 0.519999)
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/StaticBody2D"]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("5_23jls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/StaticBody2D"]
+shape = SubResource("RectangleShape2D_d5rr2")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="LevelGeometry"]
+position = Vector2(938, 1045)
+scale = Vector2(20.12, 0.399999)
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/StaticBody2D2"]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("5_23jls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/StaticBody2D2"]
+shape = SubResource("RectangleShape2D_d5rr2")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="LevelGeometry"]
+position = Vector2(32, 528)
+scale = Vector2(0.499206, 7.68245)
+
+[node name="Sprite2D" type="Sprite2D" parent="LevelGeometry/StaticBody2D3"]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("5_23jls")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelGeometry/StaticBody2D3"]
+shape = SubResource("RectangleShape2D_d5rr2")
+
+[node name="Windgust_Lift" parent="." instance=ExtResource("6_atytn")]
+position = Vector2(1272, 856)
+
+[node name="Windgust_Lift2" parent="." instance=ExtResource("6_atytn")]
+position = Vector2(1400, 856)
+
+[node name="Windgust_Bounce" parent="." instance=ExtResource("7_6clpj")]
+position = Vector2(808, 976)
+
+[node name="Windgust_Bounce2" parent="." instance=ExtResource("7_6clpj")]
+position = Vector2(2088, 984)
+
+[node name="Spike" parent="." instance=ExtResource("8_we5w7")]
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAdABAAAwAAAAAAAAAcABAAAwAAAAAAAAAbABAAAwAAAAAAAAAaABAAAwAAAAAAAAAZABAAAwAAAAAAAAAYABAAAwAAAAAAAAAXABAAAwAAAAAAAAAWABAAAwAAAAAAAAAVABAAAwAAAAAAAAAUABAAAwAAAAAAAAATABAAAwAAAAAAAAASABAAAwAAAAAAAAARABAAAwAAAAAAAAAQABAAAwAAAAAAAAAPABAAAwAAAAAAAAAOABAAAwAAAAAAAAANABAAAwAAAAAAAAAMABAAAwAAAAAAAAALABAAAwAAAAAAAAAKABAAAwAAAAAAAAAJABAAAwAAAAAAAAAIABAAAwAAAAAAAAAHABAAAwAAAAAAAAAGABAAAwAAAAAAAAAFABAAAwAAAAAAAAAEABAAAwAAAAAAAAADABAAAwAAAAAAAAACABAAAwAAAAAAAAABABAAAwAAAAAAAAAAABAAAwAAAAAAAAAAAA8AAwAAAAAAAAAAAA4AAwAAAAAAAAAAAA0AAwAAAAAAAAAAAAwAAwAAAAAAAAAAAAsAAwAAAAAAAAAAAAoAAwAAAAAAAAAAAAkAAwAAAAAAAAAAAAgAAwAAAAAAAAAAAAcAAwAAAAAAAAAAAAYAAwAAAAAAAAAAAAUAAwAAAAAAAAAAAAQAAwAAAAAAAAAAAAMAAwAAAAAAAAAAAAIAAwAAAAAAAAAAAAEAAwAAAAAAAAACAAMAAwAAAAAAAAADAAMAAwAAAAAAAAAEAAMAAwAAAAAAAAAFAAMAAwAAAAAAAAAGAAMAAwAAAAAAAAAHAAMAAwAAAAAAAAAIAAMAAwAAAAAAAAAJAAMAAwAAAAAAAAAKAAMAAwAAAAAAAAAeABAAAwAAAAAAAAAfABAAAwAAAAAAAAAgABAAAwAAAAAAAAAhABAAAwAAAAAAAAAiABAAAwAAAAAAAAAjABAAAwAAAAAAAAAkABAAAwAAAAAAAAAGAAwAAwAAAAAAAAAHAAwAAwAAAAAAAAAIAAwAAwAAAAAAAAAJAAwAAwAAAAAAAAAKAAwAAwAAAAAAAAALAAwAAwAAAAAAAAAMAAwAAwAAAAAAAAA=")
+tile_set = SubResource("TileSet_48vvs")
+rendering_quadrant_size = 64
+collision_enabled = false
+
+[node name="CompositeCollider" type="StaticBody2D" parent="."]
+script = ExtResource("11_sehf1")
+tilemaplayers_nodepaths = Array[NodePath]([NodePath("../TileMapLayer")])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CompositeCollider"]
+position = Vector2(32, 544)
+shape = SubResource("RectangleShape2D_twcfd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CompositeCollider"]
+position = Vector2(416, 224)
+shape = SubResource("RectangleShape2D_cvpsd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="CompositeCollider"]
+position = Vector2(608, 800)
+shape = SubResource("RectangleShape2D_hq5w4")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="CompositeCollider"]
+position = Vector2(1184, 1056)
+shape = SubResource("RectangleShape2D_gdjj2")
+
+[node name="FruitCollectible" parent="." instance=ExtResource("12_djo0y")]
+position = Vector2(288, 928)
+
+[node name="FruitCollectible2" parent="." instance=ExtResource("12_djo0y")]
+position = Vector2(656, 112)
+
+[node name="FruitCollectible3" parent="." instance=ExtResource("12_djo0y")]
+position = Vector2(1816, 880)
