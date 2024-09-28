@@ -6,6 +6,9 @@ const JUMP_VELOCITY = -400.0
 var gravity = Vector2(0,980)
 var slowfallGravity = Vector2(0,40)
 var direction
+var stamina = 0
+var max_stamina = 60
+var stamina_refresh_rate = 60
 enum States{IDLE, RUNNING, FALLING, GLIDING, CLIMBING}
 var state: States = States.IDLE
 
@@ -25,13 +28,14 @@ func _process(delta: float) -> void:
 			state = States.GLIDING
 		else: state = States.FALLING
 	if is_on_wall():
-		state = States.CLIMBING
-		#if Input.is_action_pressed("action_1"):
+		if Input.is_action_pressed("action_1") && stamina > 0:
+			state = States.CLIMBING
 			
 	
-		
+	
 	$Label.text = str("state : ", state)
-	$StaminaLabel.text = str("Stamina : ", 60)
+	var a = "%.0f" % stamina
+	$StaminaLabel.text = str("Stamina : ", a)
 
 func _physics_process(delta: float) -> void:
 	
@@ -42,13 +46,20 @@ func _physics_process(delta: float) -> void:
 		pass
 	if state == States.CLIMBING:
 		velocity.y = JUMP_VELOCITY/2
+		if stamina > 0:
+			stamina -= 20 * delta
 	if state == States.RUNNING:
 		velocity.x = direction * SPEED
+		if stamina < max_stamina:
+			stamina += stamina_refresh_rate * delta
 	if state == States.IDLE:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		if stamina < max_stamina:
+			stamina += stamina_refresh_rate * delta
 	if state in [States.IDLE, States.RUNNING, States.FALLING]:
 		velocity += gravity * delta
 		$WingsSprite.visible = false
+		
 
 	# Handle jump.
 	#if Input.is_action_just_pressed("action_1") and is_on_floor():

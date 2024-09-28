@@ -16,4 +16,6 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.get_class() == "CharacterBody2D":
 		#delete self, add +1 to collected fruits 
+		Signals.emit_signal("FruitCollected")
+		queue_free()
 		pass
