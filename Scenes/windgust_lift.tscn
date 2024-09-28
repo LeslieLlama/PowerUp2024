@@ -17,5 +17,13 @@ modulate = Color(1, 1, 1, 0.4)
 scale = Vector2(1, 2.52)
 texture = ExtResource("1_00kxd")
 
+[node name="Label" type="Label" parent="."]
+offset_left = -32.0
+offset_top = -64.0
+offset_right = 41.0
+offset_bottom = -15.0
+text = "Windgust
+Type B"
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

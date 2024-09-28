@@ -119,6 +119,9 @@ shape = SubResource("RectangleShape2D_d5rr2")
 [node name="Windgust_Lift" parent="." instance=ExtResource("4_s0mef")]
 position = Vector2(1272, 856)
 
+[node name="Windgust_Lift2" parent="." instance=ExtResource("4_s0mef")]
+position = Vector2(1400, 856)
+
 [node name="Windgust_Bounce" parent="." instance=ExtResource("4_e2snr")]
 position = Vector2(808, 976)
 
@@ -151,6 +154,7 @@ position = Vector2(960, 1056)
 shape = SubResource("RectangleShape2D_m4m1u")
 
 [node name="FruitCollectible" parent="." instance=ExtResource("11_hrm8m")]
+position = Vector2(288, 928)
 
 [node name="FruitCollectible2" parent="." instance=ExtResource("11_hrm8m")]
 position = Vector2(656, 112)
