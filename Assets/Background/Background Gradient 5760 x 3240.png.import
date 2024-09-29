@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwrtargoq8bo4"
-path="res://.godot/imported/Background 1.png-c3d290f59ae394b1e191fdefc0aa1167.ctex"
+uid="uid://bwoky1wwbnye7"
+path="res://.godot/imported/Background Gradient 5760 x 3240.png-ece4e35794c73b3e20fc6d9de7a507f2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Background 1.png"
-dest_files=["res://.godot/imported/Background 1.png-c3d290f59ae394b1e191fdefc0aa1167.ctex"]
+source_file="res://Assets/Background/Background Gradient 5760 x 3240.png"
+dest_files=["res://.godot/imported/Background Gradient 5760 x 3240.png-ece4e35794c73b3e20fc6d9de7a507f2.ctex"]
 
 [params]
 

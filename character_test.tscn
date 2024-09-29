@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://c58mgi6lbhled"]
+[gd_scene load_steps=13 format=4 uid="uid://c58mgi6lbhled"]
 
 [ext_resource type="Script" path="res://LevelControl.gd" id="1_won5r"]
 [ext_resource type="PackedScene" uid="uid://luklkme5r03o" path="res://Scenes/UserInterface.tscn" id="2_0ho62"]
 [ext_resource type="PackedScene" uid="uid://cbmi64eg0ffdy" path="res://Scenes/player_character.tscn" id="2_cvby1"]
-[ext_resource type="Texture2D" uid="uid://bwrtargoq8bo4" path="res://Assets/Background 1.png" id="3_4jiuq"]
+[ext_resource type="Texture2D" uid="uid://bwoky1wwbnye7" path="res://Assets/Background/Background Gradient 5760 x 3240.png" id="3_4aujm"]
+[ext_resource type="Texture2D" uid="uid://baomaxk5fjsug" path="res://Assets/Background/Moon.png" id="4_45q3g"]
 [ext_resource type="PackedScene" uid="uid://neubdpnluya4" path="res://Scenes/windgust_bounce.tscn" id="4_e2snr"]
 [ext_resource type="PackedScene" uid="uid://m8g6lhv56ob6" path="res://Scenes/windgust_lift.tscn" id="4_s0mef"]
 [ext_resource type="PackedScene" uid="uid://cv7bvkyygtjq0" path="res://Scenes/spike.tscn" id="6_ttam5"]
@@ -21,9 +22,18 @@ script = ExtResource("1_won5r")
 position = Vector2(288, 128)
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("3_4jiuq")
+offset_left = -845.0
+offset_top = -2174.0
+offset_right = 4915.0
+offset_bottom = 1066.0
+texture = ExtResource("3_4aujm")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 998.0
+offset_top = 79.0
+offset_right = 1646.0
+offset_bottom = 739.0
+texture = ExtResource("4_45q3g")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 135.0
