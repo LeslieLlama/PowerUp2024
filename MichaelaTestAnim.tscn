@@ -85,13 +85,9 @@ animations = [{
 [node name="Node2D" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
 sprite_frames = SubResource("SpriteFrames_vaafd")
 animation = &"new_animation"
-frame = 4
-frame_progress = 0.861113
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_odetw")
-frame = 4
-frame_progress = 0.949689
+frame_progress = 0.468513
