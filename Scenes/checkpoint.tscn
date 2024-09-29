@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://d10253j8s3efj"]
+
+[ext_resource type="Texture2D" uid="uid://culampgt06wms" path="res://icon.svg" id="1_mkfqw"]
+[ext_resource type="Script" path="res://Scripts/checkpoint.gd" id="1_mw2is"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1hgj7"]
+size = Vector2(128, 128)
+
+[node name="Checkpoint" type="Area2D"]
+script = ExtResource("1_mw2is")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_mkfqw")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_1hgj7")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -40.0
+offset_top = -8.0
+offset_right = 48.0
+offset_bottom = 15.0
+text = "Checkpoint"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

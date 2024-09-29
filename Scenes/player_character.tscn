@@ -24,18 +24,30 @@ shape = SubResource("CapsuleShape2D_aon5n")
 
 [node name="Label" type="Label" parent="."]
 modulate = Color(0, 0, 0, 1)
+offset_left = -7.28352
+offset_top = -33.4549
+offset_right = 41.7165
+offset_bottom = -10.4549
+scale = Vector2(0.318328, 0.376624)
+text = "State: "
+
+[node name="DirectionLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
 offset_left = -7.28353
 offset_top = -25.5053
 offset_right = 41.7165
 offset_bottom = -2.50534
 scale = Vector2(0.318328, 0.376624)
-text = "State: "
+text = "Dir:"
 
 [node name="StaminaLabel" type="Label" parent="."]
-offset_left = -7.28351
-offset_top = -34.4488
-offset_right = 41.7165
-offset_bottom = -11.4488
+offset_left = -7.2835
+offset_top = -42.3984
+offset_right = 65.7165
+offset_bottom = -19.3984
 scale = Vector2(0.318328, 0.376624)
 theme_override_colors/font_color = Color(0.24631, 0.799065, 0.545432, 1)
 text = "Stamina: "
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(-24.2784, 0)
