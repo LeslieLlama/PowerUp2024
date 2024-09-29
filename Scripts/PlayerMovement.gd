@@ -17,16 +17,14 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	direction = Input.get_axis("left", "right")
-	
-	
 	#state machine
 	if direction:
 		$RayCast2D.target_position = Vector2(10*direction,0) 
-		state = States.RUNNING
+		set_state(States.RUNNING)
 			
 	else:
 		state = States.IDLE
-	if not is_on_floor() and not is_on_wall():
+	if not is_on_floor() and not is_on_wall() and velocity.y > 0:
 		if Input.is_action_pressed("action_1"):
 			state = States.GLIDING
 		else: state = States.FALLING
@@ -43,7 +41,15 @@ func _process(delta: float) -> void:
 	var a = "%.0f" % stamina
 	$StaminaLabel.text = str("Stamina : ", a)
 
+func set_state(new_state: int) -> void:
+	var previous_state := state
+	state = new_state
+
 func _physics_process(delta: float) -> void:
+	
+	if is_on_floor():
+		if stamina < max_stamina:
+			stamina += stamina_refresh_rate * delta
 	
 	if state == States.GLIDING:
 		velocity += slowfallGravity * delta
@@ -56,12 +62,10 @@ func _physics_process(delta: float) -> void:
 			stamina -= 20 * delta
 	if state == States.RUNNING:
 		#velocity.x = direction * SPEED
-		if stamina < max_stamina:
-			stamina += stamina_refresh_rate * delta
+		pass
 	if state == States.IDLE:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		if stamina < max_stamina:
-			stamina += stamina_refresh_rate * delta
+		
 	if state in [States.IDLE, States.RUNNING, States.FALLING]:
 		velocity += gravity * delta
 		$WingsSprite.visible = false
@@ -81,6 +85,8 @@ func _physics_process(delta: float) -> void:
 		
 	move_and_slide()
 
+
+	
 	
 func _take_damage():
 	print("owch!")
