@@ -36,6 +36,7 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("action_1") && stamina > 0:
 			state = States.CLIMBING
 			
+	#var onSpikes = World.get_custom_data_at(position, "on_spikes")
 	
 	$DirectionLabel.text = str("direction : ", direction)
 	$Label.text = str("state : ", state)
@@ -54,9 +55,11 @@ func _physics_process(delta: float) -> void:
 		if stamina > 0:
 			stamina -= 20 * delta
 	if state == States.RUNNING:
+		#velocity.x = direction * SPEED
 		if stamina < max_stamina:
 			stamina += stamina_refresh_rate * delta
 	if state == States.IDLE:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
 		if stamina < max_stamina:
 			stamina += stamina_refresh_rate * delta
 	if state in [States.IDLE, States.RUNNING, States.FALLING]:
@@ -73,6 +76,9 @@ func _physics_process(delta: float) -> void:
 	#if Input.is_action_just_pressed("action_1") and is_on_floor():
 		#velocity.y = JUMP_VELOCITY
 #
+	#var direction := Input.get_axis("left", "right")
+	
+		
 	move_and_slide()
 
 	

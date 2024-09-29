@@ -6,3 +6,5 @@ extends Node
 signal PlayerDamage()
 
 signal FruitCollected()
+
+signal CheckpointReached(position)
