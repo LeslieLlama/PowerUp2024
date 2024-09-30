@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://c58mgi6lbhled"]
+[gd_scene load_steps=46 format=4 uid="uid://c58mgi6lbhled"]
 
 [ext_resource type="Script" path="res://LevelControl.gd" id="1_won5r"]
 [ext_resource type="PackedScene" uid="uid://luklkme5r03o" path="res://Scenes/UserInterface.tscn" id="2_0ho62"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://c7ukjsy5mxvmk" path="res://Scenes/EndScreen.tscn" id="14_iaen2"]
 [ext_resource type="Script" path="res://Scripts/endzone.gd" id="14_p5ou3"]
 [ext_resource type="PackedScene" uid="uid://d10253j8s3efj" path="res://Scenes/checkpoint.tscn" id="14_pjf1y"]
+[ext_resource type="AudioStream" uid="uid://deauoqymw4j2y" path="res://Assets/723971__universfield__floating-piano-melodies.mp3" id="18_vd2bv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_evdfw"]
 size = Vector2(1984, 1088)
@@ -662,6 +663,10 @@ target_level = ExtResource("14_iaen2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Endzone2"]
 position = Vector2(776, -664)
 shape = SubResource("RectangleShape2D_ag87m")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_vd2bv")
+autoplay = true
 
 [connection signal="body_entered" from="Spikes/Spike2" to="Spikes/Spike2" method="_on_body_entered"]
 [connection signal="body_entered" from="Spikes/Spike3" to="Spikes/Spike3" method="_on_body_entered"]
