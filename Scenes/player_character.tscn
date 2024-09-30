@@ -127,6 +127,7 @@ position = Vector2(-3.94524, -2.98114)
 shape = SubResource("CapsuleShape2D_aon5n")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 1)
 offset_left = -7.28352
 offset_top = -33.4549
@@ -136,6 +137,7 @@ scale = Vector2(0.318328, 0.376624)
 text = "State: "
 
 [node name="DirectionLabel" type="Label" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 1)
 offset_left = -7.28353
 offset_top = -25.5053
@@ -145,6 +147,7 @@ scale = Vector2(0.318328, 0.376624)
 text = "Dir:"
 
 [node name="StaminaLabel" type="Label" parent="."]
+visible = false
 offset_left = -7.2835
 offset_top = -42.3984
 offset_right = 65.7165

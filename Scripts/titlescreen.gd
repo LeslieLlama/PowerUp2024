@@ -8,7 +8,7 @@ func _ready() -> void:
 	var tween = create_tween()
 	tween.tween_property(fadeout, "color", Color(0,0,0,0), 0.5)
 	#tween.tween_callback(_set_slide_to_false)
-	$FruitCount.text = str(Signals.fruitcount,"/12")
+	$FruitCount.text = str(Signals.fruitcount,"/5")
 
 func _load_new_scene():
 	get_tree().change_scene_to_packed(target_level)

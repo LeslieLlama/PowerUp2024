@@ -18,6 +18,7 @@ offset_bottom = 1080.0
 color = Color(0, 0, 0, 0)
 
 [node name="Label" type="Label" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -31,6 +32,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Fruits Collected: "
 
 [node name="FruitCountNum" type="Label" parent="Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5

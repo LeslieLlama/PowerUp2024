@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bqes5e0xqgdvc"]
 
 [ext_resource type="Script" path="res://Scripts/fruit_collectible.gd" id="1_5mgy8"]
-[ext_resource type="Texture2D" uid="uid://culampgt06wms" path="res://icon.svg" id="1_ndvrg"]
+[ext_resource type="Texture2D" uid="uid://colj4ntdinqwk" path="res://Assets/Bug Red.png" id="2_2x7iq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m1m6q"]
 size = Vector2(64, 64)
@@ -10,14 +10,14 @@ size = Vector2(64, 64)
 script = ExtResource("1_5mgy8")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.870588, 0.0666667, 1)
-scale = Vector2(0.502922, 0.519066)
-texture = ExtResource("1_ndvrg")
+scale = Vector2(0.048, 0.048)
+texture = ExtResource("2_2x7iq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_m1m6q")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -32.0
 offset_top = -24.0
 offset_right = 49.0

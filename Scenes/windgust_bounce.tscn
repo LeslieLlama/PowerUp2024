@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://neubdpnluya4"]
 
 [ext_resource type="Script" path="res://Scripts/windgust_bounce.gd" id="1_qm44a"]
-[ext_resource type="Texture2D" uid="uid://culampgt06wms" path="res://icon.svg" id="2_oaxd2"]
+[ext_resource type="Texture2D" uid="uid://dcl0cnd0bujaw" path="res://Assets/Tiles/Wind.png" id="2_mwep3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p6duo"]
 size = Vector2(128, 320)
@@ -14,11 +14,13 @@ script = ExtResource("1_qm44a")
 shape = SubResource("RectangleShape2D_p6duo")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.411765, 0, 0.4)
-scale = Vector2(1, 2.52)
-texture = ExtResource("2_oaxd2")
+modulate = Color(0.984562, 0.358972, 0.613445, 0.584314)
+position = Vector2(10.9653, 0)
+scale = Vector2(0.4526, 1.15689)
+texture = ExtResource("2_mwep3")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -21.9305
 offset_top = -77.2227
 offset_right = 51.0695
