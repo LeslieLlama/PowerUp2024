@@ -22,7 +22,7 @@ func _physics_process(delta:float)->void:
 	time = fmod(time + delta/phase_time, 1.0)
 	global_position = get_pos(time)
 	
-func _process(delta):
+func _process(_delta):
 	queue_redraw()
 	
 func _draw()->void:

@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cviqli7ghy5qw"]
+
+[ext_resource type="Script" path="res://Scripts/titlescreen.gd" id="1_mjqwm"]
+[ext_resource type="Texture2D" uid="uid://c825ch3vh3hnh" path="res://Placeholders/PekaTitleCard.png" id="1_wkexe"]
+[ext_resource type="PackedScene" uid="uid://c58mgi6lbhled" path="res://character_test.tscn" id="2_7a0hx"]
+[ext_resource type="Texture2D" uid="uid://grlt76sad8yo" path="res://Placeholders/PlaySymbol.png" id="2_ccmu1"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_mjqwm")
+target_level = ExtResource("2_7a0hx")
+
+[node name="Fadeout" type="ColorRect" parent="."]
+z_index = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0)
+
+[node name="Titlecard" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_wkexe")
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 1504.0
+offset_top = 864.0
+offset_right = 1566.0
+offset_bottom = 895.0
+scale = Vector2(5.06451, 4.14888)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayButton"]
+position = Vector2(31.5924, 15.4259)
+scale = Vector2(0.142117, 0.142117)
+texture = ExtResource("2_ccmu1")
+
+[node name="FruitCount" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 1496.0
+offset_top = 848.0
+offset_right = 1856.0
+offset_bottom = 1008.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 53
+text = "0/12"
+
+[connection signal="button_up" from="PlayButton" to="." method="_on_play_button_button_down"]

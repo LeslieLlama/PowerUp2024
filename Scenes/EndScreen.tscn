@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7ukjsy5mxvmk"]
+
+[ext_resource type="Script" path="res://Scripts/titlescreen.gd" id="1_m0bco"]
+[ext_resource type="PackedScene" uid="uid://dn664k61nl5bv" path="res://Scenes/TempScene.tscn" id="2_ecf2t"]
+[ext_resource type="Texture2D" uid="uid://c825ch3vh3hnh" path="res://Placeholders/PekaTitleCard.png" id="3_ln644"]
+[ext_resource type="Texture2D" uid="uid://grlt76sad8yo" path="res://Placeholders/PlaySymbol.png" id="4_wtmll"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_m0bco")
+target_level = ExtResource("2_ecf2t")
+
+[node name="Fadeout" type="ColorRect" parent="."]
+z_index = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0)
+
+[node name="Titlecard" type="TextureRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("3_ln644")
+
+[node name="PlayButton" type="Button" parent="."]
+visible = false
+offset_left = 824.0
+offset_top = 888.0
+offset_right = 886.0
+offset_bottom = 919.0
+scale = Vector2(5.06451, 4.14888)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayButton"]
+visible = false
+position = Vector2(31.5924, 15.4259)
+scale = Vector2(0.142117, 0.142117)
+texture = ExtResource("4_wtmll")
+
+[node name="Label" type="Label" parent="PlayButton"]
+layout_mode = 0
+offset_left = 1.57964
+offset_top = 7.71293
+offset_right = 105.58
+offset_bottom = 36.7129
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 9
+text = "Return Home"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 1496.0
+offset_top = 712.0
+offset_right = 1856.0
+offset_bottom = 872.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 53
+text = "Fruits Collected: "
+
+[node name="FruitCount" type="RichTextLabel" parent="."]
+offset_left = 1496.0
+offset_top = 848.0
+offset_right = 1856.0
+offset_bottom = 1008.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 53
+text = "0/12"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 280.0
+offset_top = 232.0
+offset_right = 1584.0
+offset_bottom = 816.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 200
+text = "Well Done!"
+
+[connection signal="button_up" from="PlayButton" to="." method="_on_play_button_button_down"]

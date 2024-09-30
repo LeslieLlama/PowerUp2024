@@ -4,7 +4,7 @@ extends Area2D
 @export var boost_velocity = -150
 var floating_objects: Array[Node]
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	for obj in floating_objects:
 		obj.velocity.y = boost_velocity
 

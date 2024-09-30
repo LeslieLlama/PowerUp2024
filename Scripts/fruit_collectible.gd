@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#bob up and down slightly
 	pass
 
@@ -16,5 +16,6 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.get_class() == "CharacterBody2D":
 		Signals.emit_signal("FruitCollected")
+		Signals.fruitcount += 1
 		queue_free()
 		pass

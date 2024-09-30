@@ -120,8 +120,7 @@ texture = ExtResource("2_w3o1v")
 z_index = 1
 scale = Vector2(0.0761689, 0.0761689)
 sprite_frames = SubResource("SpriteFrames_m2p06")
-animation = &"Idle"
-frame_progress = 0.494423
+animation = &"Flying"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3.94524, -2.98114)
@@ -156,3 +155,6 @@ text = "Stamina: "
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(12.7462, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+target_position = Vector2(0, -12)

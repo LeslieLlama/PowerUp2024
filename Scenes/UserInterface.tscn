@@ -11,25 +11,33 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_pyoin")
 
-[node name="Label" type="Label" parent="."]
+[node name="Fadeout" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0)
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -64.5
-offset_right = 64.5
+offset_left = 875.5
+offset_right = 1004.5
 offset_bottom = 23.0
 grow_horizontal = 2
 scale = Vector2(1.70466, 3.3178)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Fruits Collected: "
 
-[node name="FruitCountNum" type="Label" parent="."]
+[node name="FruitCountNum" type="Label" parent="Control"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 160.0
+offset_left = 1100.0
 offset_top = -16.0
-offset_right = 289.0
+offset_right = 1229.0
 offset_bottom = 7.0
 grow_horizontal = 2
 scale = Vector2(5.36327, 5.0482)

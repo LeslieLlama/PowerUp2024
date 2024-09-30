@@ -7,16 +7,16 @@ var gravity = Vector2(0,980)
 var slowfallGravity = Vector2(0,40)
 var direction
 var stamina = 0
-var max_stamina = 60
+var max_stamina = 300
 var stamina_refresh_rate = 60
-enum States{IDLE, RUNNING, FALLING, GLIDING, CLIMBING}
+enum States{IDLE, RUNNING, FALLING, GLIDING, CLIMBING, CEILING_CLIMB}
 var state: States = States.IDLE
 
 
 func _ready() -> void:
 	Signals.PlayerDamage.connect(_take_damage)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	direction = Input.get_axis("left", "right")
 	#state machine
 	if direction:
@@ -34,8 +34,11 @@ func _process(delta: float) -> void:
 	if $RayCast2D.is_colliding():
 		#direction = 0
 		#velocity.x = 0
-		if Input.is_action_pressed("action_1") && stamina > 0:
+		if Input.is_action_pressed("action_1"):
 			set_state(States.CLIMBING)
+	if $RayCast2D2.is_colliding():
+		if Input.is_action_pressed("action_1"):
+			set_state(States.CEILING_CLIMB)
 			
 	#var onSpikes = World.get_custom_data_at(position, "on_spikes")
 	
@@ -44,12 +47,13 @@ func _process(delta: float) -> void:
 	var a = "%.0f" % stamina
 	$StaminaLabel.text = str("Stamina : ", a)
 
-func set_state(new_state: int) -> void:
+func set_state(new_state: States) -> void:
 	var previous_state := state
 	state = new_state
 	
 	if previous_state == States.CLIMBING:
-		pass
+		velocity.y = JUMP_VELOCITY
+		
 
 func _physics_process(delta: float) -> void:
 	
@@ -72,7 +76,12 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("Running")
 		if stamina > 0:
 			stamina -= 20 * delta
-	else: $AnimatedSprite2D.rotation = 0
+	if state == States.CEILING_CLIMB:
+		velocity.x = direction * SPEED
+		$AnimatedSprite2D.rotation = -180
+		$AnimatedSprite2D.play("Running")
+		if direction == 0:
+			$AnimatedSprite2D.play("Idle")
 	if state == States.RUNNING:
 		$AnimatedSprite2D.play("Running")
 	if state == States.IDLE:
@@ -88,6 +97,9 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+			
+	if state in [States.RUNNING,States.IDLE, States.GLIDING, States.FALLING]:
+		$AnimatedSprite2D.rotation = 0
 		
 	# Handle jump.
 	#if Input.is_action_just_pressed("action_1") and is_on_floor():

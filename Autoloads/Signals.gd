@@ -2,6 +2,7 @@ extends Node
 
 
 #signal UpgradeStats(typeOfPowerup, ammount, handName)
+var fruitcount = 0
 
 signal PlayerDamage()
 
