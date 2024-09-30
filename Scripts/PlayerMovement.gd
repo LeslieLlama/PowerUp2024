@@ -11,10 +11,11 @@ var max_stamina = 300
 var stamina_refresh_rate = 60
 enum States{IDLE, RUNNING, FALLING, GLIDING, CLIMBING, CEILING_CLIMB}
 var state: States = States.IDLE
-
+var in_wind_tunnel = false
 
 func _ready() -> void:
 	Signals.PlayerDamage.connect(_take_damage)
+	Signals.EnterWindZone.connect(_enter_wind_tunnel)
 
 func _process(_delta: float) -> void:
 	direction = Input.get_axis("left", "right")
@@ -27,9 +28,15 @@ func _process(_delta: float) -> void:
 			
 	else:
 		set_state(States.IDLE)
-	if not is_on_floor() and not is_on_wall() and velocity.y > 0:
+	if not is_on_floor() and not is_on_wall():
 		if Input.is_action_pressed("action_1"):
-			set_state(States.GLIDING)
+			if in_wind_tunnel == true:
+				set_state(States.GLIDING)
+				velocity.y = -150
+			elif in_wind_tunnel == false and velocity.y < 0:
+				set_state(States.FALLING)
+			else:
+				set_state(States.GLIDING)
 		else: set_state(States.FALLING)
 	if $RayCast2D.is_colliding():
 		#direction = 0
@@ -39,7 +46,6 @@ func _process(_delta: float) -> void:
 	if $RayCast2D2.is_colliding():
 		if Input.is_action_pressed("action_1"):
 			set_state(States.CEILING_CLIMB)
-			
 	#var onSpikes = World.get_custom_data_at(position, "on_spikes")
 	
 	$DirectionLabel.text = str("direction : ", direction)
@@ -62,7 +68,7 @@ func _physics_process(delta: float) -> void:
 			stamina += stamina_refresh_rate * delta
 	
 	if state == States.GLIDING:
-		velocity += slowfallGravity * delta
+		velocity += slowfallGravity * delta	
 		#$WingsSprite.visible = true
 		$AnimatedSprite2D.play("Flying")
 	if state == States.FALLING:
@@ -109,6 +115,9 @@ func _physics_process(delta: float) -> void:
 	
 		
 	move_and_slide()
+
+func _enter_wind_tunnel(is_in_tunnel):
+	in_wind_tunnel = is_in_tunnel
 
 func _on_RoomDetector_area_entered(area: Area2D) -> void:
 	var collision_shape = area.get_node("CollisionShape2D")

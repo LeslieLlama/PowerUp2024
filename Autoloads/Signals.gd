@@ -11,3 +11,5 @@ signal FruitCollected()
 signal CheckpointReached(position)
 
 signal NewCameraZone(area2d)
+
+signal EnterWindZone(bool)
